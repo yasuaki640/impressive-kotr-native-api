@@ -2,7 +2,8 @@ val ktor_version: String = "2.2.2"
 
 plugins {
     application
-    kotlin("multiplatform") version "1.7.21"
+    kotlin("multiplatform") version "1.8.0"
+    kotlin("plugin.serialization") version "1.8.0"
 }
 
 group = "me.yasuaki640"
@@ -35,6 +36,8 @@ kotlin {
             dependencies {
                 implementation("io.ktor:ktor-server-core:$ktor_version")
                 implementation("io.ktor:ktor-server-cio:$ktor_version")
+                implementation("io.ktor:ktor-serialization-kotlinx-json:$ktor_version")
+                implementation("io.ktor:ktor-server-content-negotiation:$ktor_version")
             }
         }
         val apiTest by getting
