@@ -6,9 +6,6 @@ CREATE TABLE customer
     email     TEXT    NOT NULL
 );
 
-INSERT INTO customer
-VALUES (1, 's', 's', 's');
-
 selectAll:
 SELECT *
 FROM customer;

@@ -24,12 +24,14 @@ sqldelight {
 }
 
 kotlin {
+    val target = "api"
     val hostOs = System.getProperty("os.name")
+    val isArm: Boolean = System.getProperty("os.arch") == "aarch64"
     val isMingwX64 = hostOs.startsWith("Windows")
     val apiTarget = when {
-        hostOs == "Mac OS X" -> macosX64("api")
-        hostOs == "Linux" -> linuxX64("api")
-        isMingwX64 -> mingwX64("api")
+        hostOs == "Mac OS X" -> if (isArm) macosArm64(target) else macosX64(target)
+        hostOs == "Linux" -> if (isArm) linuxArm64(target) else macosX64(target)
+        isMingwX64 -> mingwX64(target)
         else -> throw GradleException("Host OS is not supported in Kotlin/Native.")
     }
 
@@ -37,6 +39,7 @@ kotlin {
         binaries {
             executable {
                 entryPoint = "com.example.main"
+                linkerOpts.add("-lsqlite3")
             }
         }
     }
