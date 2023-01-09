@@ -1,3 +1,5 @@
+package com.example
+
 import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.application.*
 import io.ktor.server.cio.*
@@ -15,7 +17,7 @@ fun main() {
             json(Json)
         }
 
-        routing {
+        routing() {
             get("/customers") {
                 val customer = Customer(1, "tako", "uni", "kani@hotate.com")
                 call.respond(customer)
@@ -23,6 +25,7 @@ fun main() {
         }
 
     }.start(wait = true)
+
 }
 
 @Serializable

@@ -27,7 +27,7 @@ kotlin {
     apiTarget.apply {
         binaries {
             executable {
-                entryPoint = "main"
+                entryPoint = "com.example.main"
             }
         }
     }
