@@ -17,12 +17,16 @@ fun Route.customerRouting(db: Database) {
             call.respond(customers)
         }
         get("{id?}") {
-            val id = call.parameters["id"] ?: return@get call.respondText(
-                "Missing id",
-                status = HttpStatusCode.BadRequest
+            val idStr = call.parameters["id"] ?: return@get call.respondText(
+                "Missing id", status = HttpStatusCode.BadRequest
             )
+            val id = idStr.toLong()
+            val customer: CustomerDTO? = db.customerQueries.selectById(id, mapper).executeAsOneOrNull()
 
-            val customer = CustomerDTO(id.toLong(), "shake", "surume", "iwashi@hkatsuo.com")
+            if (customer == null) {
+                call.respond(HttpStatusCode.NotFound, "No customer found.")
+                return@get
+            }
             call.respond(customer)
         }
     }

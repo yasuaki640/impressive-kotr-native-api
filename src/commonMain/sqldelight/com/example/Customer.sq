@@ -6,6 +6,25 @@ CREATE TABLE customer
     email     TEXT    NOT NULL
 );
 
+insert:
+INSERT INTO customer(firstName, lastName, email)
+VALUES ?;
+
+selectById:
+SELECT *
+FROM customer
+WHERE id = ?;
+
 selectAll:
 SELECT *
 FROM customer;
+
+update:
+UPDATE customer
+SET firstName = ?, lastName = ?, email = ?
+WHERE id = ?;
+
+deleteById:
+DELETE
+FROM customer
+WHERE id = ?;
