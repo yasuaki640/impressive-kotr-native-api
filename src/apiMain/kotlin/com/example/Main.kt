@@ -1,6 +1,7 @@
 package com.example
 
 import com.example.plugins.configureDatabase
+import com.example.plugins.configureRequestLogging
 import com.example.plugins.configureRouting
 import com.example.plugins.configureSerialization
 import io.ktor.server.cio.*
@@ -12,5 +13,6 @@ fun main() {
         val db = configureDatabase()
         configureRouting(db)
         configureSerialization()
+        configureRequestLogging()
     }.start(wait = true)
 }

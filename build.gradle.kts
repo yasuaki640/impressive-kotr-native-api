@@ -1,3 +1,4 @@
+val kotlin_version: String = "1.8.0"
 val ktor_version: String = "2.2.2"
 val sqldelight_version: String = "1.5.4"
 
@@ -52,8 +53,10 @@ kotlin {
                 implementation("com.squareup.sqldelight:native-driver:$sqldelight_version")
                 implementation("io.ktor:ktor-server-core:$ktor_version")
                 implementation("io.ktor:ktor-server-cio:$ktor_version")
-                implementation("io.ktor:ktor-serialization-kotlinx-json:$ktor_version")
+                implementation("io.ktor:ktor-server-call-id:$ktor_version")
                 implementation("io.ktor:ktor-server-content-negotiation:$ktor_version")
+                implementation("io.ktor:ktor-serialization-kotlinx-json:$ktor_version")
+                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
             }
         }
         val apiTest by getting
