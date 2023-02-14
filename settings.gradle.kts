@@ -1,3 +1,2 @@
 
-rootProject.name = "impressive-kotr-native-api"
-
+rootProject.name = "impressive-ktor-native-api"

@@ -31,7 +31,8 @@ fun Route.customerRouting(db: Database) {
         }
         get("{id?}") {
             val idStr = call.parameters["id"] ?: return@get call.respondText(
-                "Missing id", status = HttpStatusCode.BadRequest
+                "Missing id",
+                status = HttpStatusCode.BadRequest,
             )
             val id = idStr.toLong()
             val customer: CustomerDTO? = db.customerQueries.selectById(id, toDto).executeAsOneOrNull()
@@ -44,7 +45,8 @@ fun Route.customerRouting(db: Database) {
         }
         delete("{id?}") {
             val idStr = call.parameters["id"] ?: return@delete call.respondText(
-                "Missing id", status = HttpStatusCode.BadRequest
+                "Missing id",
+                status = HttpStatusCode.BadRequest,
             )
             val id = idStr.toLong()
 

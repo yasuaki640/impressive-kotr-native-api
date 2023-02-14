@@ -29,7 +29,7 @@ private data class Request(
     val status: Int,
     val duration: Long,
     val httpVersion: String,
-    val time: LocalDateTime
+    val time: LocalDateTime,
 )
 
 private fun createRequestLoggingPlugin() = createApplicationPlugin("RequestLoggingPlugin") {
@@ -49,7 +49,7 @@ private fun createRequestLoggingPlugin() = createApplicationPlugin("RequestLoggi
                     duration = duration,
                     httpVersion = request.httpVersion,
                     time = timeReq,
-                )
+                ),
             )
 
             when {
